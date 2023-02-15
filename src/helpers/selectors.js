@@ -26,3 +26,25 @@ export function getInterview(state, interview) {
   const interviewer = state.interviewers[interviewerId];
   return {...interview, interviewer: interviewer};
 }
+
+export function getInterviewersForDay(state, day) {
+  let interviewers = [];
+  let interviewersForDay = [];
+
+  const filteredStateDay = state.days.filter(item => item.name === day);
+
+  filteredStateDay.forEach((item) => {
+    interviewers = item.interviewers;
+  });
+
+  interviewers = interviewers.map(String);
+
+  for(let item of interviewers) {
+    if (Object.keys(state.interviewers).includes(item)) {
+      interviewersForDay.push(state.interviewers[item]);
+    }
+  }
+    
+  return interviewersForDay;
+
+}
