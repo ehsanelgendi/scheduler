@@ -34,12 +34,33 @@ export default function Application(props) {
     });
   }, []);
   
+  // to save interview data 
+  function bookInterview(id, interview) {
+    // console.log(id, interview);
+    const appointment = {
+      ...state.appointments[id],
+      interview: { ...interview }
+    };
+    const appointments = {
+      ...state.appointments,
+      [id]: appointment
+    };
+
+    return axios.put(`/api/appointments/${id}`, {
+      interview: interview
+    }).then(res => {
+      setState({
+        ...state,
+        appointments
+      });
+    });
+  }
+
   const appointments = getAppointmentsForDay(state, state.day);
   const interviewersForDay = getInterviewersForDay(state, state.day);
 
   const schedule = appointments.map((appointment) => {
     const interview = getInterview(state, appointment.interview);
-  
     return (
       <Appointment
         key={appointment.id}
@@ -47,6 +68,7 @@ export default function Application(props) {
         time={appointment.time}
         interview={interview}
         interviewers={interviewersForDay}
+        bookInterview={bookInterview}
       />
     );
   });
