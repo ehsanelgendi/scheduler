@@ -18,7 +18,7 @@ export default function useApplicationData() {
       axios.get('/api/appointments'),
       axios.get('/api/interviewers')
     ]).then((all) => {
-      console.log('all:', all);
+      // console.log('all:', all);
       setState(prev => ({
         ...prev,
         days: all[0].data,

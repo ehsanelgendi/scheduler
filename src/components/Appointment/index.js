@@ -7,6 +7,7 @@ import Form from "./Form";
 import useVisualMode from "../hooks/useVisualMode";
 import Status from "./Status";
 import Confirm from "./Confirm";
+import Error from "./Error";
 
 
 export default function Appointment(props) {
@@ -31,7 +32,7 @@ export default function Appointment(props) {
     transition(SAVING);
     props.bookInterview(props.id, interview)
     .then(() => transition(SHOW))
-    .then(error => transition(ERROR_SAVE, true));
+    .catch(error => transition(ERROR_SAVE, true));
 
   }
 
@@ -47,7 +48,7 @@ export default function Appointment(props) {
   }
 
   return (
-    <article className="appointment">
+    <article className="appointment" data-testid="appointment">
       <Header time={props.time}/>
       {mode === EMPTY && <Empty onAdd={() => transition(CREATE)} />}
       {mode === SHOW && (
@@ -83,7 +84,8 @@ export default function Appointment(props) {
           onCancel={back}
         />
       )}
-      {/* {mode === ERROR_SAVE && } */}
+      {mode === ERROR_SAVE && <Error onClose={back} message={"Appointment could not be saved!"}/>}
+      {mode === ERROR_DELETE && <Error onClose={back} message={"Appointment could not be deleted!"}/>}
 
     </article>
   );
