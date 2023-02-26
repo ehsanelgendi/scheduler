@@ -26,7 +26,7 @@ npm install
 
 ## 2. Running scheduler-api Server
 
-Follow instructions [here](https://github.com/lighthouse-labs/scheduler-api) to run the API server
+Follow the instructions [here](https://github.com/lighthouse-labs/scheduler-api) to run the API server
 
 ## 3. Running Webpack Development Server
 
