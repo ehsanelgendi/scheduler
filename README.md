@@ -3,8 +3,11 @@ Interview Scheduler is a single-page application (SPA) that allows users to book
 
 # Final Product
 ## Switching Days
+![Switching Days](https://github.com/ehsanelgendi/scheduler/blob/master/docs/switching-days.gif?raw=true)
+
 
 ## Book, edit, remove an appointment
+![Book, Edit, Remove Appointment](https://github.com/ehsanelgendi/scheduler/blob/master/docs/book-edit-delete-appointment.gif?raw=true)
 
 # Setup
 
